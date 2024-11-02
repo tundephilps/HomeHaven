@@ -7,6 +7,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Image,
+  StatusBar,
 } from "react-native";
 import {
   Entypo,
@@ -54,6 +55,7 @@ const Login: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="#f5f5f5" />
       <View style={styles.content}>
         <Text style={styles.title}>Welcome Back!</Text>
         <Text style={styles.subtitle}>

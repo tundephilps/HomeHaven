@@ -50,7 +50,7 @@ const TabNavigator = () => (
         fontWeight: "700",
       },
       tabBarStyle: {
-        height: Platform.OS === "ios" ? 88 : 50,
+        height: Platform.OS === "ios" ? 89 : 55,
       },
       tabBarActiveTintColor: "#006D5B",
       tabBarInactiveTintColor: "gray",

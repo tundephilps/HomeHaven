@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
+  StatusBar,
 } from "react-native";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import Entypo from "@expo/vector-icons/Entypo";
@@ -45,7 +46,7 @@ const Homepage = () => {
   return (
     <View style={styles.container}>
       {/* Search Bar */}
-
+      <StatusBar backgroundColor="#f5f5f5" />
       <View
         style={{
           display: "flex",
@@ -156,77 +157,6 @@ const Homepage = () => {
         </View>
 
         <View style={{ padding: 14 }}>
-          {/* <View
-            style={{
-              height: 246,
-              width: 152,
-              backgroundColor: "#ffffff",
-              borderRadius: 14,
-              paddingVertical: 16,
-            }}
-          >
-            <Image
-              source={require("../assets/images/Product1.png")}
-              style={{ height: 121, width: 120, marginHorizontal: "auto" }}
-              resizeMode="cover"
-            />
-            <View style={{ paddingHorizontal: 16, gap: 2, bottom: 14 }}>
-              <View
-                style={{
-                  backgroundColor: "#E44A4A",
-                  height: 20,
-                  width: 51,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderTopStartRadius: 10,
-
-                  borderBottomEndRadius: 10,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "#ffffff",
-                    fontWeight: "600",
-                    fontSize: 10,
-                  }}
-                >
-                  45% OFF
-                </Text>
-              </View>
-              <Text
-                style={{
-                  fontWeight: "400",
-                  color: "#404040",
-                  paddingVertical: 6,
-                }}
-              >
-                EKERO
-              </Text>
-              <Text
-                style={{ fontWeight: "700", color: "#404040", fontSize: 20 }}
-              >
-                $230.00
-              </Text>
-              <Text
-                style={{ fontWeight: "400", color: "#404040", fontSize: 12 }}
-              >
-                $512.58{" "}
-              </Text>
-
-              <View
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "row",
-                  gap: 4,
-                }}
-              >
-                <Entypo name="star" size={18} color="#EBB65B" />
-                <Text style={{ fontSize: 12, fontWeight: 400 }}>4.9 (256)</Text>
-              </View>
-            </View>
-          </View> */}
           <FlatList
             data={data}
             horizontal

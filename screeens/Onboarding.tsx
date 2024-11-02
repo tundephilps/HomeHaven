@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CurvedImage from "../components/CurvedImage";
 import {
   View,
   Text,
@@ -68,13 +69,15 @@ const Onboarding: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.slideContainer}>
         <Image
           source={slides[currentSlideIndex].image}
           style={styles.image}
           resizeMode="cover"
         />
+
+        {/* <CurvedImage source={slides[currentSlideIndex].image} /> */}
         <View style={styles.contentContainer}>
           <Text style={styles.title}>{slides[currentSlideIndex].title}</Text>
           <Text style={styles.description}>
@@ -148,7 +151,7 @@ const Onboarding: React.FC = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
