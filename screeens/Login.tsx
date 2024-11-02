@@ -275,6 +275,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     marginTop: 24,
+    alignItems: "center",
   },
   registerText: {
     color: "#404040",
