@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Image,
-  StyleSheet,
-  Dimensions,
-  StatusBar,
-  Text,
-} from "react-native";
+import { View, StyleSheet, Dimensions, StatusBar, Text } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
