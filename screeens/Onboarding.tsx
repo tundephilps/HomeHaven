@@ -250,10 +250,11 @@ const styles = StyleSheet.create({
     justifyContent: "center", // Centers the single button on first slide
   },
   button: {
-    paddingVertical: 12,
+    height: 43,
     paddingHorizontal: 24,
     borderRadius: 8,
     alignItems: "center",
+    justifyContent: "center",
   },
   fullWidthButton: {
     width: "90%", // Taking almost full width on first slide

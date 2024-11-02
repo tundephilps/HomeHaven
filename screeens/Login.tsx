@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
+  Image,
 } from "react-native";
 import {
   Entypo,
@@ -34,7 +35,7 @@ const Login: React.FC = () => {
     // Implement your login logic here
     console.log("Login attempted with:", formData);
 
-    navigation.navigate("Home"); // Navigate to Home screen
+    navigation.navigate("Homepage"); // Navigate to Home screen
   };
 
   const handleGoogleLogin = () => {
@@ -131,7 +132,11 @@ const Login: React.FC = () => {
             style={[styles.socialButton, styles.googleButton]}
             onPress={handleGoogleLogin}
           >
-            <AntDesign name="google" size={24} color="#DB4437" />
+            <Image
+              source={require("../assets/images/google.png")}
+              style={{ height: 16, width: 16, marginVertical: 22 }}
+              resizeMode="cover"
+            />
             <Text style={styles.socialButtonText}>Log in with Google</Text>
           </TouchableOpacity>
 
@@ -159,21 +164,21 @@ const Login: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5f5f5",
   },
   content: {
     flex: 1,
     padding: 24,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
+    fontSize: 32,
+    fontWeight: "800",
+    color: "#404040",
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 14,
-    color: "#666",
+    fontSize: 16,
+    color: "#757575",
     marginBottom: 32,
   },
   form: {
@@ -187,7 +192,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
     paddingHorizontal: 12,
-    height: 48,
+    height: 53,
+    backgroundColor: "#ffffff",
   },
   inputIcon: {
     marginRight: 8,
@@ -205,17 +211,18 @@ const styles = StyleSheet.create({
     padding: 4, // Increase touch target
   },
   forgotPasswordContainer: {
-    alignItems: "flex-end",
+    alignItems: "flex-start",
     marginBottom: 24,
   },
   forgotPasswordText: {
     color: "#156651",
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: "400",
   },
   loginButton: {
     backgroundColor: "#156651",
     borderRadius: 8,
-    height: 48,
+    height: 43,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 24,
@@ -238,13 +245,13 @@ const styles = StyleSheet.create({
   dividerText: {
     color: "#999",
     paddingHorizontal: 16,
-    fontSize: 14,
+    fontSize: 12,
   },
   socialButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    height: 48,
+    height: 43,
     borderRadius: 8,
     marginBottom: 16,
     borderWidth: 1,
@@ -252,8 +259,9 @@ const styles = StyleSheet.create({
   },
   socialButtonText: {
     fontSize: 16,
-    color: "#333",
+    color: "#156651",
     marginLeft: 12,
+    fontWeight: "700",
   },
   googleButton: {
     backgroundColor: "#FFFFFF",
@@ -267,8 +275,8 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   registerText: {
-    color: "#666",
-    fontSize: 14,
+    color: "#404040",
+    fontSize: 16,
   },
   registerLink: {
     color: "#156651",

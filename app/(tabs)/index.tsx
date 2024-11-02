@@ -11,7 +11,7 @@ import Homepage from "@/screeens/Homepage";
 import MyAccount from "@/screeens/MyAccount";
 import MyCart from "@/screeens/MyCart";
 import { Platform } from "react-native";
-
+import Feather from "@expo/vector-icons/Feather";
 import { Ionicons } from "@expo/vector-icons";
 
 type RootStackParamList = {
@@ -33,12 +33,12 @@ const TabNavigator = () => (
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
 
-        if (route.name === "Home") iconName = "home-outline";
-        else if (route.name === "My Cart") iconName = "cart-outline";
-        else if (route.name === "My Account") iconName = "person-outline";
+        if (route.name === "Home") iconName = "home";
+        else if (route.name === "My Cart") iconName = "shopping-cart";
+        else if (route.name === "My Account") iconName = "user";
 
         return (
-          <Ionicons
+          <Feather
             name={iconName}
             size={24}
             color={focused ? "#006D5B" : "gray"}
@@ -72,7 +72,7 @@ export default function HomeScreen() {
       <Stack.Screen name="Onboarding" component={Onboarding} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
-      <Stack.Screen name="Home" component={TabNavigator} />
+      <Stack.Screen name="Homepage" component={TabNavigator} />
     </Stack.Navigator>
   );
 }

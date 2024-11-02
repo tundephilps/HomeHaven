@@ -7,12 +7,15 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
+  Image,
+  StatusBar,
 } from "react-native";
 import {
   MaterialCommunityIcons,
   AntDesign,
   Entypo,
   FontAwesome,
+  Feather,
 } from "@expo/vector-icons";
 
 interface RegistrationFormData {
@@ -48,6 +51,7 @@ const Signup: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="#f5f5f5" />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.content}>
           <Text style={styles.title}>Create Account</Text>
@@ -59,8 +63,8 @@ const Signup: React.FC = () => {
           <View style={styles.form}>
             {/* First Name Input */}
             <View style={styles.inputContainer}>
-              <MaterialCommunityIcons
-                name="account-outline"
+              <Feather
+                name="user"
                 size={20}
                 color="#999"
                 style={styles.inputIcon}
@@ -78,8 +82,8 @@ const Signup: React.FC = () => {
 
             {/* Last Name Input */}
             <View style={styles.inputContainer}>
-              <MaterialCommunityIcons
-                name="account-outline"
+              <Feather
+                name="user"
                 size={20}
                 color="#999"
                 style={styles.inputIcon}
@@ -173,7 +177,11 @@ const Signup: React.FC = () => {
               style={[styles.socialButton, styles.googleButton]}
               onPress={handleGoogleSignup}
             >
-              <AntDesign name="google" size={24} color="#DB4437" />
+              <Image
+                source={require("../assets/images/google.png")}
+                style={{ height: 16, width: 16, marginVertical: 22 }}
+                resizeMode="cover"
+              />
               <Text style={styles.socialButtonText}>Continue with Google</Text>
             </TouchableOpacity>
 
@@ -196,7 +204,7 @@ const Signup: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5f5f5",
   },
   scrollContent: {
     flexGrow: 1,
@@ -206,14 +214,14 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
+    fontSize: 32,
+    fontWeight: "800",
+    color: "#404040",
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 14,
-    color: "#666",
+    fontSize: 16,
+    color: "#757575",
     marginBottom: 32,
   },
   form: {
@@ -228,6 +236,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingHorizontal: 12,
     height: 48,
+    backgroundColor: "#ffffff",
   },
   inputIcon: {
     marginRight: 8,
@@ -245,8 +254,8 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   termsText: {
-    fontSize: 12,
-    color: "#666",
+    fontSize: 14,
+    color: "#757575",
     marginBottom: 24,
     lineHeight: 18,
   },
@@ -257,7 +266,7 @@ const styles = StyleSheet.create({
   createAccountButton: {
     backgroundColor: "#156651",
     borderRadius: 8,
-    height: 48,
+    height: 43,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 24,
@@ -265,7 +274,7 @@ const styles = StyleSheet.create({
   createAccountButtonText: {
     color: "#FFFFFF",
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: "700",
   },
   dividerContainer: {
     flexDirection: "row",
@@ -280,13 +289,13 @@ const styles = StyleSheet.create({
   dividerText: {
     color: "#999",
     paddingHorizontal: 16,
-    fontSize: 14,
+    fontSize: 12,
   },
   socialButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    height: 48,
+    height: 43,
     borderRadius: 8,
     marginBottom: 16,
     borderWidth: 1,
