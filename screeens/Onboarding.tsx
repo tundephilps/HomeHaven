@@ -10,7 +10,7 @@ import {
   SafeAreaView,
 } from "react-native";
 
-import { useNavigation } from "@react-navigation/native"; // Import navigation hook
+import { NavigationProp, useNavigation } from "@react-navigation/native"; // Import navigation hook
 
 const { width } = Dimensions.get("window");
 
@@ -45,10 +45,20 @@ const slides: OnboardingSlide[] = [
   },
 ];
 
+type RootStackParamList = {
+  Login: undefined;
+  Homepage: undefined;
+  Signup: undefined;
+  // Add other screens here as needed
+};
+
+// Define navigation prop type
+type NavigationProps = NavigationProp<RootStackParamList>;
+
 const Onboarding: React.FC = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const navigation = useNavigation(); // Access navigation
 
+  const navigation = useNavigation<NavigationProps>();
   const handleNext = () => {
     if (currentSlideIndex < slides.length - 1) {
       setCurrentSlideIndex(currentSlideIndex + 1);

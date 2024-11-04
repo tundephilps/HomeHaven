@@ -16,7 +16,17 @@ import {
   FontAwesome,
 } from "@expo/vector-icons";
 
-import { useNavigation } from "@react-navigation/native"; // Import useNavigation
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+
+type RootStackParamList = {
+  Login: undefined;
+  Homepage: undefined;
+  Signup: undefined;
+  // Add other screens here as needed
+};
+
+// Define navigation prop type
+type NavigationProps = NavigationProp<RootStackParamList>;
 
 interface LoginFormData {
   email: string;
@@ -30,7 +40,7 @@ const Login: React.FC = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigation = useNavigation(); // Initialize navigation
+  const navigation = useNavigation<NavigationProps>();
 
   const handleLogin = () => {
     // Implement your login logic here
