@@ -30,16 +30,22 @@ type RootStackParamList = {
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+type FeatherIconName = "home" | "shopping-cart" | "user";
+
 const TabNavigator = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
       headerShown: false,
       tabBarIcon: ({ focused, color, size }) => {
-        let iconName;
+        let iconName: FeatherIconName = "home"; // Set default value
 
-        if (route.name === "Home") iconName = "home";
-        else if (route.name === "My Cart") iconName = "shopping-cart";
-        else if (route.name === "My Account") iconName = "user";
+        if (route.name === "Home") {
+          iconName = "home";
+        } else if (route.name === "My Cart") {
+          iconName = "shopping-cart";
+        } else if (route.name === "My Account") {
+          iconName = "user";
+        }
 
         return (
           <Feather
