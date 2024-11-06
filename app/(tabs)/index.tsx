@@ -12,11 +12,6 @@ import MyAccount from "@/screeens/MyAccount";
 import MyCart from "@/screeens/MyCart";
 import { Platform } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
-import { Ionicons } from "@expo/vector-icons";
-import { ApolloProvider } from "@apollo/client";
-import { AuthProvider } from "@/hooks/context/AuthContext";
-import { CartProvider } from "@/hooks/context/CartContext";
-import { client } from "@/hooks/lib/apollo";
 
 type RootStackParamList = {
   Splash: undefined;
@@ -74,22 +69,16 @@ const TabNavigator = () => (
 
 export default function HomeScreen() {
   return (
-    <ApolloProvider client={client}>
-      <AuthProvider>
-        <CartProvider>
-          <Stack.Navigator
-            initialRouteName="Splash"
-            screenOptions={{ headerShown: false }}
-          >
-            <Stack.Screen name="Splash" component={SplashScreen} />
-            <Stack.Screen name="Onboarding" component={Onboarding} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Signup" component={Signup} />
-            <Stack.Screen name="Homepage" component={TabNavigator} />
-          </Stack.Navigator>
-        </CartProvider>
-      </AuthProvider>
-    </ApolloProvider>
+    <Stack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Splash" component={SplashScreen} />
+      <Stack.Screen name="Onboarding" component={Onboarding} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="Homepage" component={TabNavigator} />
+    </Stack.Navigator>
   );
 }
 
