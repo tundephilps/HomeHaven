@@ -81,9 +81,20 @@ const Login: React.FC = () => {
               color="#999"
               style={styles.inputIcon}
             />
+            <Text
+              style={{
+                position: "absolute",
+                top: 8,
+                left: 40,
+                fontSize: 12,
+                color: "#404040",
+              }}
+            >
+              Email
+            </Text>
             <TextInput
               style={styles.input}
-              placeholder="Email"
+              placeholder="rifqi.naufal@mail.com"
               placeholderTextColor="#999"
               keyboardType="email-address"
               autoCapitalize="none"
@@ -100,9 +111,20 @@ const Login: React.FC = () => {
               color="#999"
               style={styles.inputIcon}
             />
+            <Text
+              style={{
+                position: "absolute",
+                top: 8,
+                left: 40,
+                fontSize: 12,
+                color: "#404040",
+              }}
+            >
+              Password
+            </Text>
             <TextInput
               style={[styles.input, styles.passwordInput]}
-              placeholder="Password"
+              placeholder="*********"
               placeholderTextColor="#999"
               secureTextEntry={!showPassword}
               value={formData.password}
@@ -215,6 +237,8 @@ const styles = StyleSheet.create({
     height: "100%",
     fontSize: 16,
     color: "#333",
+
+    marginTop: 15,
   },
   passwordInput: {
     paddingRight: 40,

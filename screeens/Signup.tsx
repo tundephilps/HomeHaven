@@ -69,9 +69,20 @@ const Signup: React.FC = () => {
                 color="#999"
                 style={styles.inputIcon}
               />
+              <Text
+                style={{
+                  position: "absolute",
+                  top: 8,
+                  left: 40,
+                  fontSize: 12,
+                  color: "#404040",
+                }}
+              >
+                First Name
+              </Text>
               <TextInput
                 style={styles.input}
-                placeholder="First Name"
+                placeholder="Claire"
                 placeholderTextColor="#999"
                 value={formData.firstName}
                 onChangeText={(text) =>
@@ -88,9 +99,20 @@ const Signup: React.FC = () => {
                 color="#999"
                 style={styles.inputIcon}
               />
+              <Text
+                style={{
+                  position: "absolute",
+                  top: 8,
+                  left: 40,
+                  fontSize: 12,
+                  color: "#404040",
+                }}
+              >
+                Last Name
+              </Text>
               <TextInput
                 style={styles.input}
-                placeholder="Last Name"
+                placeholder="Cooper"
                 placeholderTextColor="#999"
                 value={formData.lastName}
                 onChangeText={(text) =>
@@ -107,9 +129,20 @@ const Signup: React.FC = () => {
                 color="#999"
                 style={styles.inputIcon}
               />
+              <Text
+                style={{
+                  position: "absolute",
+                  top: 8,
+                  left: 40,
+                  fontSize: 12,
+                  color: "#404040",
+                }}
+              >
+                Email
+              </Text>
               <TextInput
                 style={styles.input}
-                placeholder="Email"
+                placeholder="claire.cooper@mail.com"
                 placeholderTextColor="#999"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -128,9 +161,20 @@ const Signup: React.FC = () => {
                 color="#999"
                 style={styles.inputIcon}
               />
+              <Text
+                style={{
+                  position: "absolute",
+                  top: 8,
+                  left: 40,
+                  fontSize: 12,
+                  color: "#404040",
+                }}
+              >
+                Password
+              </Text>
               <TextInput
                 style={[styles.input, styles.passwordInput]}
-                placeholder="Password"
+                placeholder="*********"
                 placeholderTextColor="#999"
                 secureTextEntry={!showPassword}
                 value={formData.password}
@@ -228,6 +272,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   inputContainer: {
+    position: "relative",
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
@@ -246,6 +291,7 @@ const styles = StyleSheet.create({
     height: "100%",
     fontSize: 16,
     color: "#333",
+    marginTop: 15,
   },
   passwordInput: {
     paddingRight: 40,
