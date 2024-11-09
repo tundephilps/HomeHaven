@@ -15,3 +15,10 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```bash
     npx expo start
    ```
+
+## To Login
+
+To Login
+
+Email: nasi@gmail.com
+Password: Ok487526
