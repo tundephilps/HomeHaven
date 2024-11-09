@@ -18,6 +18,8 @@ import {
 
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 type RootStackParamList = {
   Login: undefined;
   Homepage: undefined;
@@ -39,14 +41,76 @@ const Login: React.FC = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigation = useNavigation<NavigationProps>();
 
-  const handleLogin = () => {
-    // Implement your login logic here
-    console.log("Login attempted with:", formData);
+  const handleLogin = async () => {
+    const { email, password } = formData;
+    if (!email || !password) {
+      setErrorMessage("Please enter both email and password.");
+      return;
+    }
 
-    navigation.navigate("Homepage"); // Navigate to Home screen
+    setLoading(true);
+    setErrorMessage("");
+
+    const graphqlEndpoint = "https://jsonplaceholder.ir/graphql";
+    const query = `
+      query {
+        users {
+          id
+          username
+          email
+          password
+          website
+        }
+      }
+    `;
+
+    try {
+      const response = await fetch(graphqlEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query,
+        }),
+      });
+
+      const { data, errors } = await response.json();
+
+      if (errors) {
+        setErrorMessage("An error occurred. Please try again.");
+        console.error(errors);
+      } else {
+        const users = data?.users;
+
+        const user = users?.find(
+          (u: { email: string; password: string }) =>
+            u.email === email && u.password === password
+        );
+
+        if (!user) {
+          setErrorMessage(
+            "Invalid credentials. Please check your email and password."
+          );
+        } else {
+          await AsyncStorage.setItem("authToken", JSON.stringify(user.id));
+          await AsyncStorage.setItem("user", JSON.stringify(user));
+
+          // Navigate to homepage
+          navigation.navigate("Homepage");
+        }
+      }
+    } catch (error) {
+      setErrorMessage("An error occurred. Please try again.");
+      console.error("Login error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleGoogleLogin = () => {
@@ -144,14 +208,24 @@ const Login: React.FC = () => {
             </TouchableOpacity>
           </View>
 
+          {/* Error Message */}
+          {errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
+
           {/* Forgot Password Link */}
           <TouchableOpacity style={styles.forgotPasswordContainer}>
             <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
           </TouchableOpacity>
 
           {/* Login Button */}
-          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-            <Text style={styles.loginButtonText}>Log in</Text>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={handleLogin}
+            disabled={loading}
+          >
+            <Text style={styles.loginButtonText}>
+              {" "}
+              {loading ? "Logging in..." : "Log in"}
+            </Text>
           </TouchableOpacity>
 
           {/* Divider */}
@@ -245,6 +319,12 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     padding: 4, // Increase touch target
+  },
+  errorText: {
+    color: "red",
+    fontSize: 14,
+    fontWeight: "600",
+    marginBottom: 12,
   },
   forgotPasswordContainer: {
     alignItems: "flex-start",
