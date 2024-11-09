@@ -177,9 +177,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: "55%",
-    borderBottomLeftRadius: 90,
-    borderBottomRightRadius: 90,
+    height: "60%",
+    // borderBottomLeftRadius: 90,
+    // borderBottomRightRadius: 90,
   },
   contentContainer: {
     padding: 20,
